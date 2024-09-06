@@ -1,0 +1,14 @@
+{
+  data: {
+    id: '793b8e38-1f56-49e7-8b82-b52ef57c68c2',
+    parent_id: '72992eb8-d823-4446-84e5-7fe0d488c955',
+    title: 'Uploaded_by_one_request_video',
+    description: 'My first uploaded video via API',
+    status: 'processing',
+    play_link: 'https://kinescope.io/fYhaFkcj1k1GPMnkJ36mcd',
+    embed_link: 'https://kinescope.io/embed/fYhaFkcj1k1GPMnkJ36mcd',
+    hls_link: 'https://kinescope.io/fYhaFkcj1k1GPMnkJ36mcd/master.m3u8',
+    created_at: '2024-09-06T10:41:26.778949Z'
+  }
+}
+200

@@ -1,0 +1,24 @@
+{
+  "name": "Kinescope_API",
+  "version": "1.0.0",
+  "description": "Kinescope API twst project",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:reporter": "playwright test --reporter=line,allure-playwright,list,html",
+    "allure-report": "npx allure generate -c ./allure-results && allure open"
+  },
+  "keywords": [],
+  "author": "Sergey Abramov",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@playwright/test": "^1.47.0",
+    "@types/node": "^20.12.12",
+    "allure-commandline": "^2.20.1",
+    "allure-playwright": "^2.0.0-beta.23"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
