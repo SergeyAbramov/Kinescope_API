@@ -1,8 +1,0 @@
-https://ru-msk-uploader-1.kinescope.io/v2/upload/a4f072f4-a7f7-47af-b827-68d1ade6fbf3?id=408b448b-638c-4eaa-a3b3-efc68112763d
-{
-  data: {
-    id: '408b448b-638c-4eaa-a3b3-efc68112763d',
-    endpoint: 'https://ru-msk-uploader-1.kinescope.io/v2/upload/a4f072f4-a7f7-47af-b827-68d1ade6fbf3?id=408b448b-638c-4eaa-a3b3-efc68112763d'
-  }
-}
-201
