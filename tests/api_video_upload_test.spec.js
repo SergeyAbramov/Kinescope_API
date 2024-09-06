@@ -35,7 +35,7 @@ test.describe('@api_video_upload_test.spec.js Test that user is able to upload s
     });
 
     test('2. @link_upload Test that user is able to get the upload link', async ({ request }) => {
-
+        // путь к файлу
         const filePath = '/Users/Shared/Big_Buck_Bunny_1080_10s_1MB.mp4';
         const fileContent = fs.readFileSync(filePath);
 
@@ -73,7 +73,7 @@ test.describe('@api_video_upload_test.spec.js Test that user is able to upload s
             
         });
     test('3. @one_request_upload Test that user is able upload video by one request', async ({ request }) => {
-        
+        // путь к файлу
         const filePath = '/Users/Shared/Big_Buck_Bunny_1080_10s_1MB.mp4';
         const fileContent = fs.readFileSync(filePath);
 
@@ -100,7 +100,7 @@ test.describe('@api_video_upload_test.spec.js Test that user is able to upload s
             
         });
         
-        test.skip('4. @upload_via_url Test that user is able upload video by URL', async ({ request }) => {
+        test('4. @upload_via_url Test that user is able upload video by URL', async ({ request }) => {
             const response = await request.post('https://uploader.kinescope.io/v2/video', {
 
                 headers: {
@@ -122,7 +122,7 @@ test.describe('@api_video_upload_test.spec.js Test that user is able to upload s
             
         });
 
-    test('4. @admin_upload_check That the video uploaded via API is shown in the admin panel, Delete uploaded files', async({ page }) => {
+    test('5. @admin_upload_check That the video uploaded via API is shown in the admin panel, Delete uploaded files', async({ page }) => {
 
         const LoginPage = new LoginScreen(page);
         const VideoCatalog = new VideoCatalogPagge(page);
@@ -134,11 +134,15 @@ test.describe('@api_video_upload_test.spec.js Test that user is able to upload s
         await expect(page.locator('#dashboard-app')).toContainText('Demo project');
         await expect(page.locator('#dashboard-app')).toContainText('Uploaded_by_one_request_video');
         await expect(page.locator('#dashboard-app')).toContainText('Uploaded_via_link_video');
-        await expect(page.locator('#dashboard-app')).toContainText('объекта • 11.03 MB');
+        // ждём пока загрузится файл из youtube
+        await expect(page.getByText('3 объекта')).toBeVisible({ timeout: 60000 });
+        // удаляем загруженные файлы
         await VideoCatalog.deleteFirstVideo();
         await VideoCatalog.deleteSecondVideo();
+        await VideoCatalog.deleteThirdVideo();
         await expect(page.locator('#dashboard-app')).toContainText('Нет объектов • 0 B');
         await expect(page.locator('#dashboard-app')).toContainText('Загрузить файлы');
+        await expect(page.locator('#dashboard-app')).toContainText('🐚 В папке ничего нет');
 
     })
     });

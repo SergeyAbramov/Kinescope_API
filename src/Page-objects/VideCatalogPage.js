@@ -9,15 +9,22 @@ exports.VideoCatalogPagge = class VideoCatalogPage {
         this.CONFIRM_DELETE_BTN = page.getByRole('button', { name: 'Удалить enter' });
         this.VIDEO_THREE_DOT_MENU_2 = page.locator('//*[@type="button"][@class="_i1ytmm  "]');
     }
-    async deleteFirstVideo(){
+    async deleteFirstVideo() {
         await this.VIDEO_THREE_DOT_MENU.click();
         await expect(this.DELETE_VIDEO_BTN).toBeVisible();
         await this.DELETE_VIDEO_BTN.click();
         await expect(this.CONFIRM_DELETE_BTN).toBeVisible();
         await this.CONFIRM_DELETE_BTN.click();
     }
-    async deleteSecondVideo(){
+    async deleteThirdVideo() {
         await this.VIDEO_THREE_DOT_MENU_2.click();
+        await expect(this.DELETE_VIDEO_BTN).toBeVisible();
+        await this.DELETE_VIDEO_BTN.click();
+        await expect(this.CONFIRM_DELETE_BTN).toBeVisible();
+        await this.CONFIRM_DELETE_BTN.click();
+    }
+    async deleteSecondVideo() {
+        await this.VIDEO_THREE_DOT_MENU.click();
         await expect(this.DELETE_VIDEO_BTN).toBeVisible();
         await this.DELETE_VIDEO_BTN.click();
         await expect(this.CONFIRM_DELETE_BTN).toBeVisible();
