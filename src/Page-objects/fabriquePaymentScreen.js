@@ -17,14 +17,14 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         this.PLAN_DATE = page.locator('.date__input').first();
         this.DATE_10 = page.getByRole('button', { name: '10' }).first().click();
         this.ACTUAL_DATE = page.locator('div:nth-child(9) > div > div:nth-child(2) > div > div > .form-field > .form-field__field > .date > .date__content > .date__input');
-        this.DATE_30 = page.getByRole('button', { name: '30' });
+        this.DATE_31 = page.getByRole('button', { name: '31' });
         this.PAYMENT_REASON_DROP_DOWN = page.locator('.multiselect__placeholder').first();
         this.FIRST_PAYMENT_REASON = page.getByText('1894');
         this.PAYMENT_REASON_TEXT_INPUT = page.locator('textarea[type="textarea"]').nth(1);
-        this.DOC_STATUS_DROP_DOWN = page.locator('//*[@id="idumk2p"]/div/div[12]/div/div[2]/div/div/div/div/div/div/div[2]/input');
+        this.DOC_STATUS_DROP_DOWN = page.getByText('Выберите').first();
         this.DOC_STATUS_FIRST = page.getByText('Счет выставлен');
         this.UL_DROP_DOWN = page.getByText('Выберите').first();
-        
+        this.UL_SELECT = page.locator('form').getByRole('list').getByText('drop table');
 
     }
     async addNewIncomePayment() {
@@ -42,7 +42,7 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         await this.PAYMENT_STATUS_PAYED.click();
         await this.PLAN_DATE.click();
         await this.ACTUAL_DATE.click();
-        await this.DATE_30.click();
+        await this.DATE_31.click();
         await this.PAYMENT_REASON_DROP_DOWN.click();
         await this.FIRST_PAYMENT_REASON.click();
         await this.PAYMENT_REASON_TEXT_INPUT.click();
@@ -50,5 +50,7 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         await this.DOC_STATUS_DROP_DOWN.click();
         await this.DOC_STATUS_FIRST.click();
         await this.UL_DROP_DOWN.click();
+        await expect(this.UL_SELECT).toBeVisible();
+        await this.UL_SELECT.click();
     }
 }
