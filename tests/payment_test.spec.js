@@ -15,7 +15,7 @@ test.describe('Тест страницы платежи', async () => {
             width: 1920
         }
     });
-    test('1. Проверка возможности залогиниться на тестовый стенд с коррктными данными email/password', async ({ browser }) => {
+    test('1. Проверка возможности залогиниться на тестовый стенд с корректными данными email/password', async ({ browser }) => {
 
         const context = await browser.newContext({
             httpCredentials: {
@@ -55,7 +55,7 @@ test.describe('Тест страницы платежи', async () => {
 
         await MainScreen.clickOnAddPaymentBtn();
         await expect(page.locator('//*[@class="pageLayout__header"]')).toHaveText('Добавить платёж'); 
-
+        // Добавляем тестовый пллатёж, заполняем все поля формы
         await AddPaymentScreen.addNewIncomePayment();
         
         await page.screenshot({ path: './test-results/payment_screen.png', fullPage: true });
@@ -78,7 +78,7 @@ test.describe('Тест страницы платежи', async () => {
         
         await LoginScreen.loginWithAdminAccount(); 
         await expect(page.getByRole('link', { name: 'admin@admin.ad' })).toBeVisible();
-
+        // Ищем тестовый платёж
         await MainScreen.fillTheSearchInput();
         await expect(page.locator('tbody')).toContainText('Тестовое описание playwright');
         await MainScreen.clickOnTestPayment();
@@ -86,9 +86,9 @@ test.describe('Тест страницы платежи', async () => {
         await expect(page.locator('input').first()).toBeVisible();
         await expect(page.getByText('приход').nth(1)).toBeVisible();
         await expect(page.getByRole('button', { name: 'Удалить' })).toBeVisible();
-
+        // Удаляем тестовый платёж
         await MainScreen.deleteTestPayment();
-
+        // Проверяем что тестовый платёж удалён
         await MainScreen.fillTheSearchInput();
         await expect(page.getByText('Нет данных')).toBeVisible();
 
