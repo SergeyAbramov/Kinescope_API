@@ -25,7 +25,18 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         this.DOC_STATUS_FIRST = page.getByText('Счет выставлен');
         this.UL_DROP_DOWN = page.getByText('Выберите').first();
         this.UL_SELECT = page.locator('form').getByRole('list').getByText('drop table');
-
+        this.PARTNER_DROP_DOWN = page.getByText('Выберите').first();
+        this.PARTNER_SELECT = page.locator('form').getByRole('list').locator('span').filter({ hasText: 'Контрагент 1' }).first();
+        this.SENDER_ACCOUNT = page.getByText('Выберите').first();
+        this.SENDER_ACCOUNT_SELECT = page.locator('form').getByRole('list').getByText('050392');
+        this.RECIPIENT_DROP_DOWN = page.getByText('Выберите').first();
+        this.RECIPIENT_SELECT = page.locator('form').getByRole('list').getByText('112342342');
+        this.TAGS_DROP_DOWN = page.getByText('Выберите');
+        this.TAG_SELECT = page.getByText('приход', { exact: true });
+        this.ADD_BTN = page.getByRole('button', { name: 'Добавить' });
+        this.SUCCESSS_PROMPT = page.getByText('Платеж успешно сохранен');
+        this.DELETE_BTN = page.getByRole('button', { name: 'Удалить' });
+        
     }
     async addNewIncomePayment() {
 
@@ -52,5 +63,19 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         await this.UL_DROP_DOWN.click();
         await expect(this.UL_SELECT).toBeVisible();
         await this.UL_SELECT.click();
+        await this.PARTNER_DROP_DOWN.click();
+        await this.PARTNER_SELECT.click();
+        await this.SENDER_ACCOUNT.click();
+        await this.SENDER_ACCOUNT_SELECT.click();
+        await this.RECIPIENT_DROP_DOWN.click();
+        await this.RECIPIENT_SELECT.click();
+        await this.TAGS_DROP_DOWN.click();
+        await this.TAG_SELECT.click();
+        await this.ADD_BTN.click();
+        await expect(this.SUCCESSS_PROMPT).toBeVisible();
+
+    }
+    async deleteTestPayment() {
+
     }
 }
