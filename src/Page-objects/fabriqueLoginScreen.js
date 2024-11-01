@@ -11,9 +11,9 @@ exports.fabriqueLoginScreen = class fabriqueLoginScreen {
     }
     async loginWithAdminAccount() {
         await this.EMAIL_FIELD.click();
-        await this.EMAIL_FIELD.fill(process.env.ADMIN_EMAIL);
+        await this.EMAIL_FIELD.fill('admin@admin.ad');
         await this.PASS_FIELD.click();
-        await this.PASS_FIELD.fill(process.env.ADMIN_PASS);
+        await this.PASS_FIELD.fill('admin');
         await this.CONTINUE_BTN.click();
     }
 }
