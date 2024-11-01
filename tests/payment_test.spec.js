@@ -61,7 +61,7 @@ test.describe('Тест страницы платежи', async () => {
         await page.screenshot({ path: './test-results/payment_screen.png', fullPage: true });
         
     });
-    test('3. Проверка того, что созданный платёж содержит все ранее введённые двнные', async ({ browser }) => {
+    test('3. Проверка того, что созданный платёж содержит все ранее введённые данные', async ({ browser }) => {
 
         const context = await browser.newContext({
             httpCredentials: {
@@ -75,7 +75,6 @@ test.describe('Тест страницы платежи', async () => {
 
         const LoginScreen = new fabriqueLoginScreen(page);
         const MainScreen = new fabriqueMainScreen(page);
-        const AddPaymentScreen = new fabriquePaymentScreen(page);
         
         await LoginScreen.loginWithAdminAccount(); 
         await expect(page.getByRole('link', { name: 'admin@admin.ad' })).toBeVisible();
@@ -87,7 +86,7 @@ test.describe('Тест страницы платежи', async () => {
         await expect(page.locator('input').first()).toBeVisible();
         await expect(page.getByText('приход').nth(1)).toBeVisible();
         await expect(page.getByRole('button', { name: 'Удалить' })).toBeVisible();
-        
+
         await MainScreen.deleteTestPayment();
 
         await MainScreen.fillTheSearchInput();

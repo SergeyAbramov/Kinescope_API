@@ -75,7 +75,4 @@ exports.fabriquePaymentScreen = class fabriquePaymentScreen {
         await expect(this.SUCCESSS_PROMPT).toBeVisible();
 
     }
-    async deleteTestPayment() {
-
-    }
 }
