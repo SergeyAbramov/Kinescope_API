@@ -88,11 +88,6 @@ test.describe('Тест страницы платежи', async () => {
         await expect(page.getByText('приход').nth(1)).toBeVisible();
         await expect(page.getByRole('button', { name: 'Удалить' })).toBeVisible();
         
-        // await MainScreen.deleteTestPayment();
-
-        // await MainScreen.fillTheSearchInput();
-        // await expect(page.getByText('Нет данных')).toBeVisible();
-
     })
     test('4. Проверка того что сохранённый ранее платёж можно удалить', async({ browser }) => {
 
