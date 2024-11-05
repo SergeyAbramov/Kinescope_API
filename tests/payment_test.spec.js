@@ -86,15 +86,35 @@ test.describe('Тест страницы платежи', async () => {
         await expect(page.locator('input').first()).toBeVisible();
         await expect(page.getByText('приход').nth(1)).toBeVisible();
         await expect(page.getByRole('button', { name: 'Удалить' })).toBeVisible();
+
+    })
+    test('4. Проверка того что сохранённый ранее платёж можно удалить', async({ browser }) => {
+
+        const context = await browser.newContext({
+            httpCredentials: {
+                username: 'fabrique',
+                password: 'fabrique'
+            }
+        })
+        const page = await context.newPage();
+
+        await page.goto('https://finance.dev.fabrique.studio/accounts/login/');
+
+        const LoginScreen = new fabriqueLoginScreen(page);
+        const MainScreen = new fabriqueMainScreen(page);
+        
+        await LoginScreen.loginWithAdminAccount(); 
+        await expect(page.getByRole('link', { name: 'admin@admin.ad' })).toBeVisible();
+        // Ищем тестовый платёж
+        await MainScreen.fillTheSearchInput();
+        await expect(page.locator('tbody')).toContainText('Тестовое описание playwright');
+        await MainScreen.clickOnTestPayment();
+        await expect(page.getByRole('button', { name: 'Удалить' })).toBeVisible();
         // Удаляем тестовый платёж
         await MainScreen.deleteTestPayment();
         // Проверяем что тестовый платёж удалён
         await MainScreen.fillTheSearchInput();
         await expect(page.getByText('Нет данных')).toBeVisible();
-
-    })
-    test.skip('4. Проверка того что сохранённый ранее платёж можно удалить', async() => {
-
 
     })
 })
