@@ -36,8 +36,13 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
-    baseURL: 'https://app.kinescope.io/',
+    //baseURL: 'http://127.0.0.1:3000',
+    //baseURL: 'https://app.kinescope.io/',
+    authSetup: require.resolve('./auth-setup.js'),
+    baseURL: 'https://api-dev.bigvu.tv/v0.5',
+    extraHTTPHeaders: {
+      Authorization: 'Bearer ${process.env.BIGVU_ACCESS_TOKEN}'
+    },
     //baseURL: 'https://finance.dev.fabrique.studio/accounts/login/',
     video: 'on-first-retry',
     launchOptions : {

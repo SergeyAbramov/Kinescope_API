@@ -6,3 +6,4 @@
 5. In terminal run the test > npx playwright test (run all the test from tests folder) >  npx playwright test payment_test.spec.js (run specific test) use --headed flag to run test in headed mode
 6. Generate allure report > allure generate -c
 7. Open allure reporter > allure open
+8. If you need to see trace >> npx playwright show-trace /Users/sergeyabramov/Downloads/trace.zip
